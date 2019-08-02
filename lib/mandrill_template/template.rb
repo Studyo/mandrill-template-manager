@@ -28,8 +28,8 @@ module MandrillTemplate
     def load_data(slug)
       if Dir.exists?(File.join(templates_directory, slug))
         @avail = true
-        code = File.read(File.join(templates_directory, slug, "code.html"))
-        text = File.read(File.join(templates_directory, slug, "text.txt"))
+        code = File.read(File.join(templates_directory, slug, "code.html"), :encoding => 'utf-8')
+        text = File.read(File.join(templates_directory, slug, "text.txt"), :encoding => 'utf-8')
         [
           YAML.load_file(File.join(templates_directory, slug, "metadata.yml")),
           code.empty? ? nil : code,
